@@ -2,11 +2,14 @@
 
 basepath=$(pwd)/../
 
+mkdir -p $basepath/forestdb/build
 pushd $basepath/forestdb/build
 cmake ../
 make
 
+mkdir -p $basepath/install/{lib,bin}
 cp $basepath/forestdb/build/libforestdb* $basepath/install/lib
+
 
 export GOPATH=$basepath/build/gobuild
 gosrc=$GOPATH/src
@@ -25,9 +28,9 @@ do
     cp -r $basepath/$project/* $gosrc/$repo/
 done
 
-export C_INCLUDE_PATH=$basepath/forestdb/include/
-export LD_LIBRARY_PATH=$basepath/install/lib
-export DYLD_LIBRARY_PATH=$basepath/install/lib
+export C_INCLUDE_PATH=$C_INCLUDE_PATH:$basepath/forestdb/include/
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$basepath/install/lib
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$basepath/install/lib
 
 pushd $gosrc/github.com/couchbase/indexing/secondary/projector/main
 go build -o projector
