@@ -1,6 +1,12 @@
 #!/bin/bash -xe
 
 basepath=$(pwd)/../
+if [ -z "$1" ];
+then
+    basepath=$(pwd)/../
+else
+    basepath=$1/../
+fi
 
 mkdir -p $basepath/forestdb/build
 pushd $basepath/forestdb/build
