@@ -21,7 +21,7 @@ export GOPATH=$basepath/build/gobuild
 gosrc=$GOPATH/src
 mkdir -p $gosrc
 
-for repo in github.com/couchbaselabs/{goprotobuf,retriever,dparval,go-couchbase,clog,go-slab,goforestdb,tuqtng} \
+for repo in github.com/couchbaselabs/{goprotobuf,retriever,dparval,go-couchbase,clog,go-slab,goforestdb,tuqtng,query} \
     github.com/couchbase/{gomemcached,indexing} \
     github.com/prataprc/collatejson \
     github.com/dustin/{gojson,go-jsonpointer} \
