@@ -45,7 +45,7 @@ popd
 
 
 pushd $gosrc/github.com/couchbase/indexing/secondary/indexer/main
-CGO_LDFLAGS="-L $basepath/install/lib" go build -o indexer
+CGO_LDFLAGS="-L $basepath/install/lib -Wl,-rpath,$basepath/install/lib" go build -o indexer
 cp indexer $basepath/install/bin/
 popd
 
